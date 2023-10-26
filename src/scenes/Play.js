@@ -77,6 +77,17 @@ class Play extends Phaser.Scene{
             this.add.text(game.config.width/2, game.config.height/2 + 64, 'Press (R) to Restart or ← for Menu', scoreConfig).setOrigin(0.5);
             this.gameOver = true;
         }, null, this);
+
+        // high score
+        /*
+        highScoreText = this.game.add.text(600, 40, 'HIGH SCORE: ' + highscore, {
+            font: '25px Arial',
+            fill: 'black'
+        });
+        this.score = 0;
+            this.labelScore = game.add.text(20, 20, "0", 
+            { font: "30px Arial", fill: "black" });
+        */
     }
 
     update() {
@@ -97,7 +108,7 @@ class Play extends Phaser.Scene{
             this.ship03.update();
         }
 
-        this.starfield.tilePositionX -= 4;  // update tile sprite
+        this.starfield.tilePositionX -= 6;  // update tile sprite // parallax scrolling
 
         // check collisions
         if(this.checkCollision(this.p1Rocket, this.ship03)) {
@@ -118,6 +129,16 @@ class Play extends Phaser.Scene{
             // this.ship01.reset();
             this.shipExplode(this.ship01); 
         }
+
+        // high score 
+        /*
+        highScoreText.text = 'HS: ' + localStorage.getItem("highscore");
+            {
+                if (this.score > localStorage.getItem("highscore")) 
+                    { 
+                        localStorage.setItem("highscore", this.score);
+                    }
+            } */
     }
 
     checkCollision(rocket, ship) {
